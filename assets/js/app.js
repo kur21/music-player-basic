@@ -196,7 +196,7 @@ const app = {
             if (audio.duration) {
                 const progressPercent = (audio.currentTime/audio.duration*100)
                 progress.value = progressPercent
-                progress.style.background = `linear-gradient(90deg, #ec1f55 0%, #ec1f55 ${progress.value-0.2}%, #d3d3d3 ${progress.value-1}%, #d3d3d3 100%)`
+                progress.style.background = `linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) ${progress.value-0.2}%, #d3d3d3 ${progress.value-1}%, #d3d3d3 100%)`
 
                 audioCurrentTime.innerText = _this.convertTime(audio.currentTime)
                 audioDurationTime.innerText = _this.convertTime(audio.duration)
@@ -266,7 +266,7 @@ const app = {
         // Xử lý khi tăng giảm âm lượng
         volumeProgress.oninput = function () {
             audio.volume = volumeProgress.value/100
-            volumeProgress.style.background = `linear-gradient(90deg, #ec1f55 0%, #ec1f55 ${volumeProgress.value-0.2}%, #d3d3d3 ${volumeProgress.value-1}%, #d3d3d3 100%)`
+            volumeProgress.style.background = `linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) ${volumeProgress.value-0.2}%, #d3d3d3 ${volumeProgress.value-1}%, #d3d3d3 100%)`
             
             if (audio.volume > 0.5) {
                 $('.volume-icon.active').classList.remove('active')
@@ -327,7 +327,7 @@ const app = {
         // Load thanh progress đã lưu trong config
         if(this.config.duration !== 0) {
             const progressCurrentPercent = (this.config.currentTime/this.config.duration*100)
-            progress.style.background = `linear-gradient(90deg, #ec1f55 0%, #ec1f55 ${progressCurrentPercent-0.2}%, #d3d3d3 ${progressCurrentPercent-1}%, #d3d3d3 100%)`
+            progress.style.background = `linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) ${progressCurrentPercent-0.2}%, #d3d3d3 ${progressCurrentPercent-1}%, #d3d3d3 100%)`
             progress.value = progressCurrentPercent
         } else {
             progress.value = 0
