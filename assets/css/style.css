@@ -134,10 +134,29 @@ header h2 {
 }
 
 .volume {
-    display: flex;
-    padding: 6px 10px;
-    border-radius: 20px;
-    font-size: 14px;
+    display: block;
+    width: 36px;
+    height: 36px;
+    position: relative;
+}
+
+.volume:hover .volume-progress,
+.volume:active .volume-progress,
+.volume:hover .volume-cover,
+.volume:active .volume-cover {
+    visibility: visible;
+}
+
+.volume-cover {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 36px;
+    height: 150px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 0px 5px;
+    visibility: hidden;
 }
 
 .download {
@@ -153,21 +172,18 @@ header h2 {
     color: var(--primary-color);
 }
 
-.volume {
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    color: #666;
-}
-
 .volume-list-icon {
     z-index: 1;
     cursor: pointer;
+    color: #666;
+    font-size: 16px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 .volume-list-icon .volume-icon.active {
     display: block;
-    width: 18px;
     text-align: center;
 }
 .volume-list-icon .volume-high-icon,
@@ -175,31 +191,8 @@ header h2 {
 .volume-list-icon .volume-mute-icon {
     display: none;
 }
-
-.volume-hide {
-    display: flex;
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: rotate(-90deg);
-    transform-origin: 0% 50%;
-    padding: 17px 12px 17px 40px;
-    background: white;
-    border-radius: 50px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 0px 5px;
-    visibility: hidden;
-    transition: all 0.2s;
-}
-
-.volume:hover .volume-hide,
-.volume:active .volume-hide {
-    visibility: visible;
-}
-
-.volume-hide.rotate {
-    transform: rotate(0deg);
-    position: unset;
-    margin-left: -30px;
+.volume-list-icon .volume-high-icon {
+    margin-left: -2px;
 }
 
 .volume-progress {
@@ -211,6 +204,13 @@ header h2 {
     border-radius: 10px;
     outline: none;
     cursor: grab;
+    position: absolute;
+    transform: rotate(-90deg);
+    transform-origin: 0 50%;
+    top: 0;
+    left: 18px;
+    z-index: 1;
+    visibility: hidden;
 }
 
 .volume-progress::-webkit-slider-thumb {

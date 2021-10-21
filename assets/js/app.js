@@ -17,7 +17,7 @@ const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
 const PLAYER_STORAGE_KEY = 'HISU_PLAYER'
-
+const body = $('body')
 const cd = $('.cd')
 const heading = $('header h2')
 const cdThumb = $('.cd-thumb')
@@ -34,8 +34,9 @@ const playlist = $('.playlist')
 const downloadBtn = $('.download')
 
 const volume = $('.volume')
-const volumeHide = $('.volume-hide')
+const volumeCover = $('.volume-cover')
 const volumeProgress = $('.volume-progress')
+const volumeIcon = $('.volume-icon')
 const muteVolumeBtn = $('.volume-mute-icon')
 const lowVolumeBtn = $('.volume-low-icon')
 const highVolumeBtn = $('.volume-high-icon')
@@ -164,9 +165,11 @@ const app = {
             cd.style.opacity = newCdWidth/cdWidth
 
             if (newCdWidth < 70) {
-                volumeHide.classList.add('rotate')
+                volumeProgress.style.width = '50px'
+                volumeCover.style.height = '100px'
             } else {
-                volumeHide.classList.remove('rotate')
+                volumeProgress.style.width = '100px'
+                volumeCover.style.height = '150px'
             }
         }
         // Xử lý khi click play button
@@ -264,6 +267,12 @@ const app = {
             }
         }
         // Xử lý khi tăng giảm âm lượng
+        volume.onmouseover = function () {
+            body.style.overflow = 'hidden';
+        };
+        volume.onmouseout = function () {
+            body.style.overflow = 'unset';
+        };
         volumeProgress.oninput = function () {
             audio.volume = volumeProgress.value/100
             volumeProgress.style.background = `linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) ${volumeProgress.value-0.2}%, #d3d3d3 ${volumeProgress.value-1}%, #d3d3d3 100%)`
@@ -278,8 +287,7 @@ const app = {
                 $('.volume-icon.active').classList.remove('active')
                 muteVolumeBtn.classList.add('active')
             }
-        }
-        
+        }        
     },
     convertTime: function(time) {
         var minutes = Math.floor(time/60)
