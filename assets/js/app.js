@@ -187,12 +187,14 @@ const app = {
             _this.isPlaying = true
             player.classList.add('playing')
             cdThumbAnimate.play()
+            document.title = `${_this.currentSong.name} - ${_this.currentSong.singer}`
         }
         // When song pause
         audio.onpause = function () {
             _this.isPlaying = false
             player.classList.remove('playing')
             cdThumbAnimate.pause()
+            document.title = "MUSIC PLAYER"
         }
         // Khi tiến độ bài hát thay đổi
         audio.ontimeupdate = function () {
@@ -328,7 +330,6 @@ const app = {
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`
         audio.src = this.currentSong.path
         downloadBtn.href = this.currentSong.path
-        document.title = `${this.currentSong.name} - ${this.currentSong.singer}`
 
         this.setConfig('currentIndex', this.currentIndex)
 
