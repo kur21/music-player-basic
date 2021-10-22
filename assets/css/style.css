@@ -26,6 +26,10 @@ html {
     font-family: "Poppins", sans-serif;
 }
 
+::-webkit-scrollbar {
+    width: 0px;
+}
+
 .player {
     position: relative;
     max-width: 480px;
